@@ -12,7 +12,7 @@ export const connectWallet = async () => {
   }
 };
 
-export const formatAddress = (address: string) => {
+export const formatAddress = (address: String) => {
   const start = address.substring(0, 3);
   const end = address.substring(address.length - 4);
   return `${start}...${end}`;
