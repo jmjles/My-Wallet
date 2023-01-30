@@ -18,7 +18,7 @@ const Token = (props: Props) => {
       {data.map((d, i) => (
         <TableCell key={i}>
           <Font>
-            <>{d}</>
+            {d}
           </Font>
         </TableCell>
       ))}

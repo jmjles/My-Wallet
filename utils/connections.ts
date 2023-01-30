@@ -32,8 +32,8 @@ export interface TrendingTokens {
   total_supply: number;
   market_cap_by_total_supply: number;
   max_supply: number;
-  last_updated: Date;
-  date_added: Date;
+  last_updated: string;
+  date_added: string;
   tags: string[];
   quotes: {
     [q: string]: Quote;
@@ -51,5 +51,5 @@ interface Quote {
   percent_change_1h: number;
   percent_change_24h: number;
   percent_change_7d: number;
-  last_updated: Date;
+  last_updated: string;
 }

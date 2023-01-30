@@ -7,7 +7,6 @@ export const connectWallet = async () => {
     });
     return accounts[0];
   } catch (er) {
-    console.log(er);
     return false;
   }
 };
