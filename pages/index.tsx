@@ -12,22 +12,25 @@ export default function Home() {
     TrendingTokens[] | undefined,
     SetState<TrendingTokens[] | undefined>
   ] = useState();
-  const [web3, setWeb3]: [undefined | Web3, SetState<undefined | Web3>] =
-    useState();
+  const [web3, setWeb3] = useState(
+    new Web3("https://mainnet.infura.io/v3/005c4180bd1942ca9761de039a234b19")
+  );
   // Setup
   useEffect(() => {
     if (!setup) {
       (async () => {
-        setWeb3(
-          new Web3(
-            "https://mainnet.infura.io/v3/005c4180bd1942ca9761de039a234b19"
-          )
-        );
         setTrendingTokens(await getTrendingTokens());
+        try {
+          window.ethereum?.on("accountsChanged", async (acc: string[]) => {
+            setAddress(acc[0]);
+          });
+        } catch {
+          return;
+        }
         setSetup(true);
       })();
     }
-  }, [setup]);
+  }, [setup, web3]);
 
   // Get User's Nfts
   useEffect(() => {

@@ -6,7 +6,7 @@ export const connectWallet = async () => {
       method: "eth_requestAccounts",
     });
     return accounts[0];
-  } catch (er) {
+  } catch {
     return false;
   }
 };
